@@ -1,0 +1,50 @@
+<div class="panel panel-info panel-border top mb35">
+    <div class="panel-heading">
+        <span class="panel-title">Nom de la farine : {{(nom)}}</span>
+    </div>
+    <div class="panel">
+        <div class="panel-body pn">
+            <div class="table-responsive">
+                <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                    <thead>
+                    <tr class="bg-light">
+                        <th class="text-center">Numero</th>
+                        <th class="">Quantite</th>
+                        <th class="">Action</th>
+                        <th class="">Date</th>
+                        <th class="">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let histo of histoList , let i=index">
+                        <td>
+                            {{i+1}}
+                        </td>
+                        <td class="">{{histo.quantite}}</td>
+                        <td class="">{{histo.action}}</td>
+                        <td class="">{{histo.date}}</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary">Actions</button>
+                                <button type="button" class="btn btn-primary dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a (click)="redirect(id,histo.id)">&nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Editer</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

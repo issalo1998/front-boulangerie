@@ -1,0 +1,76 @@
+<h2 id="page-heading">
+
+    <button style="float: right;margin-right: 20px" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-profil" (click)="createvague()" >
+
+        <span >
+             Nouvelle vague
+        </span>
+    </button>
+</h2>
+<br/> <br/><br/> <br/>
+
+
+<div class="panel">
+    <div class="panel-menu admin-form theme-primary">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="filter-datepicker" class="field prepend-picker-icon">
+                    <button type="button" class="ui-datepicker-trigger"><i class="fa fa-calendar-o"></i></button><input name="date" type="date" (change)="filterByDate()" [(ngModel)]="search.date" value="02/03/2015" id="filter-datepicker"  class="gui-input" placeholder="Filter par Date">
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body pn">
+        <div class="table-responsive">
+            <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                <thead >
+                <tr>
+                    <th class="">Numero</th>
+                    <th style="margin-right:-15px;" class="">Description</th>
+                    <th class="">Type de produit</th>
+                    <th class="">Somme</th>
+                    <th class="">Horaire</th>
+                    <th>Date Vague</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="bg-light"*ngFor="let vague of vagues | paginate: { itemsPerPage: 10, currentPage: p} , let i=index">
+
+                    <td class="">
+                        {{ i+1}}
+                    </td>
+                    <td class="">
+                        {{vague.description}}
+                    </td>
+                    <td class="">
+                        {{vague.libelle}}
+                    </td>
+                    <td class="">{{vague.somme}}</td>
+                    <td class="">{{vague.horaire}}</td>
+                    <td class="">{{vague.created_at}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <a (click)="redirect2(vague.id)"><span style="margin-right: 10px" type="button" class="label label-rounded label-warning" ><span class="glyphicon glyphicon-pencil"></span> &nbsp;&nbsp;Editer</span></a>
+                            <a (click) ="deleteData(vague.id)"><span style="margin-right: 10px" class="label label-rounded label-danger"> <span class="glyphicon glyphicon-trash"></span> &nbsp;&nbsp;Supprimer</span></a>
+                            <a (click)="redirect(vague.id)"><span style="margin-right: 10px" class="label label-rounded label-success"> <span class="glyphicon glyphicon-eye-open"></span> &nbsp;&nbsp;Details</span></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <ul class="pagination">
+                    <pagination-controls (pageChange)="p = $event"
+                                         directionLinks="true"
+                                         autoHide="true"
+                                         responsive="true"
+                                         previousLabel="Précédent"
+                                         nextLabel="Suivant">
+
+                    </pagination-controls>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<div>
+    <h2 id="page-heading">
+  
+      <button style="float: right;margin-right: 20px" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-profil" routerLink="/commandeUpdate" >
+  
+        <span >
+             Nouveau Commande
+        </span>
+      </button>
+    </h2>
+    <br/> <br/>
+  
+    <section id="content" class="table-layout animated fadeIn"   >
+  
+      <!-- begin: .tray-center -->
+      <div class="tray tray-center col-md-12" >
+  
+        <div class="mw1400 center-block">
+  
+          <!-- Begin: Content Header -->
+          <div class="content-header">
+  
+          </div>
+  
+          <!-- Begin: Admin Form -->
+          <div class="admin-form" >
+  
+
+            <div class="panel heading-border" >
+              <div class="panel-body bg-light">
+  
+                <div class="section-divider mb40" id="spy1">
+                  <span>Liste des Commandes</span>
+                </div>
+                <div class="col-sm-12">
+                  <div class="section">
+                    <label class="field prepend-icon">
+                      <input type="text" class="gui-input" name="matricule" id="field_codeEcole"
+                             [(ngModel)]="this.mot" placeholder="Barre de recherche " />
+                      <label for="field_codeEcole" class="field-icon">
+                        <i class="fa fa-search"></i>
+                      </label>
+                    </label>
+                  </div>
+                </div>
+                <div class="table-responsive" >
+                  <table class="table table-striped">
+                    <thead>
+                    <tr >
+                      <th><span >Numéro </span></th>
+                      <th><span >Date </span></th>
+                      <th><span >Facture </span></th>
+                      <th class="text-right">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let p of this.commandes| commanderpipe:this.mot|paginate: { itemsPerPage: 10, currentPage: p}">
+                      <td>{{p.numero}}</td>
+                      <td>{{p.date}}</td>
+                      <td> <span class="btn btn-success"  (click)="facture(p.id)" >facture</span></td>
+                      <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                         
+                          <span style="margin-right: 10px" type="button" class="label label-rounded label-warning" routerLink="/commandeUpdate/{{p.id}}" >Editer</span>
+                          <span class="label label-rounded label-danger"  (click)="delete(p.id)" >Supprimer</span>
+
+  
+                        
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <div class="clearfix">
+                    <ul class="pagination">
+                      <pagination-controls (pageChange)="p = $event"
+                                           directionLinks="true"
+                                           autoHide="true"
+                                           responsive="true"
+                                           previousLabel="Précédent"
+                                           nextLabel="Suivant">
+  
+                      </pagination-controls>
+                    </ul>
+                  </div>
+                </div>
+  
+  
+  
+  
+              </div>
+  
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+  </div>

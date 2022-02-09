@@ -1,0 +1,227 @@
+<div class="panel panel-info panel-border top mb35">
+  <div class="panel-heading">
+    <span class="panel-title">CREER UN PRODUIT</span>
+  </div>
+  <div class="panel-body bg-light dark"> <div class="tab-content pn br-n admin-form">
+    <div  class="tab-pane active">
+      <form [hidden]="hidden" (ngSubmit)="insertData()">
+        <div class="section row">
+          <div class="col-md-4">
+            <label  class="field prepend-icon">
+              <input type="text"  name="libelle" [(ngModel)]="produit.libelle"   class="gui-input" placeholder="Libelle">
+              <label  class="field-icon">
+                <i class="fa fa-user"></i>
+              </label>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="col-md-3 control-label">Type</label>
+              <div class="col-md-8">
+                <select name="type_id" (change)="select()"   [(ngModel)]="produit.type_id"  class="select2-single form-control">
+                  <option *ngFor="let type of types" value="{{type.id}}">{{type.libelle}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section row">
+          <div class="col-md-4">
+            <label class="field prepend-icon">
+              <textarea [(ngModel)]="produit.description" class="gui-textarea"  name="description" placeholder="Description du produit"></textarea>
+              <label  class="field-icon">
+                <i class="fa fa-edit"></i>
+              </label>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label  class="field prepend-icon">
+              <input type="number" min="0" name="contenu" [disabled]="contenubool" [(ngModel)]="produit.contenu"   class="gui-input" placeholder="contenu">
+              <label  class="field-icon">
+                <i class="fa fa-user"></i>
+              </label>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label  class="field prepend-icon">
+              <input type="number" name="prix"  [(ngModel)]="produit.prix"   class="gui-input" placeholder="Prix">
+              <label  class="field-icon">
+                <i class="fa fa-user"></i>
+              </label>
+            </label>
+          </div>
+        </div>
+        <div class="section row">
+          <div class="col-md-2">
+            <button  class="btn active btn-primary btn-block">
+              AJOUTER <span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div  class="tab-pane active">
+      <form [hidden]="!hidden" (ngSubmit)="updateProduit()">
+        <div class="section row">
+          <div class="col-md-4">
+            <label  class="field prepend-icon">
+              <input type="text"  name="libelle" [(ngModel)]="produit.libelle"   class="gui-input" placeholder="Libelle">
+              <label  class="field-icon">
+                <i class="fa fa-user"></i>
+              </label>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="col-md-3 control-label">Type</label>
+              <div class="col-md-8">
+                <select name="type_id" (change)="select()"   [(ngModel)]="produit.type_id"  class="select2-single form-control">
+                  <option *ngFor="let type of types" value="{{type.id}}">{{type.libelle}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section row">
+          <div class="col-md-4">
+            <label class="field prepend-icon">
+              <textarea [(ngModel)]="produit.description" class="gui-textarea"  name="description" placeholder="Description du produit"></textarea>
+              <label class="field-icon">
+                <i class="fa fa-edit"></i>
+              </label>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label  class="field prepend-icon">
+              <input type="number" name="contenu" [disabled]="contenubool" [(ngModel)]="produit.contenu"   class="gui-input" placeholder="contenu">
+              <label  class="field-icon">
+                <i class="fa fa-user"></i>
+              </label>
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label  class="field prepend-icon">
+              <input type="number" name="prix"  [(ngModel)]="produit.prix"   class="gui-input" placeholder="Prix">
+              <label  class="field-icon">
+                <i class="fa fa-user"></i>
+              </label>
+            </label>
+          </div>
+        </div>
+        <div class="section row">
+          <div class="col-md-2">
+            <button  class="btn active btn-primary btn-block">
+              Editer <span class="glyphicon glyphicon-pencil"></span></button>
+          </div>
+          <div class="col-md-2">
+            <button (click)="cancel()" type="button" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Retour</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="panel">
+  <div class="panel-heading">
+    <span class="panel-title">BOULANGERIE</span>
+  </div>
+  <div class="panel">
+    <div class="panel-body pn">
+      <div class="table-responsive">
+        <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+          <thead>
+          <tr class="bg-light">
+            <th class="text-center">Numero</th>
+            <th class="">libelle</th>
+            <th class="">contenu</th>
+            <th class="">prix</th>
+            <th class="">Description</th>
+            <th class="text-right">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let produit of produitListBoul   , let i=index">
+            <td>
+              {{i+1}}
+            </td>
+            <td class="">
+              {{produit.libelle}}
+            </td>
+            <td class="">
+              {{produit.contenu}}
+            </td>
+            <td class="">
+              {{produit.prix}}
+            </td>
+            <td class="">
+              {{produit.description}}
+            </td>
+            <td class="text-right">
+              <div class="btn-group flex-btn-group-container">
+                <a (click)="getProduit(produit.id)"><span style="margin-right: 10px" type="button" class="label label-rounded label-warning" ><span class="glyphicon glyphicon-pencil"></span> &nbsp;&nbsp;Editer</span></a>
+                <a (click) ="deleteData(produit.id)"><span style="margin-right: 10px" class="label label-rounded label-danger"> <span class="glyphicon glyphicon-trash"></span> &nbsp;&nbsp;Supprimer</span></a>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel">
+  <div class="panel-heading">
+    <span class="panel-title">PATISSERIE</span>
+  </div>
+  <div class="panel">
+    <div class="panel-body pn">
+      <div class="table-responsive">
+        <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+          <thead>
+          <tr class="bg-light">
+            <th class="text-center">Numero</th>
+            <th class="">libelle</th>
+            <th class="">prix</th>
+            <th class="">Description</th>
+            <th class="text-right">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let produit of produitListPat | paginate: { itemsPerPage: 10, currentPage: p}  , let i=index">
+            <td>
+              {{i+1}}
+            </td>
+            <td class="">
+              {{produit.libelle}}
+            </td>
+            <td class="">
+              {{produit.prix}}
+            </td>
+            <td class="">
+              {{produit.description}}
+            </td>
+            <td class="text-right">
+              <div class="btn-group flex-btn-group-container">
+                <a (click)="getProduit(produit.id)"><span style="margin-right: 10px" type="button" class="label label-rounded label-warning" ><span class="glyphicon glyphicon-pencil"></span> &nbsp;&nbsp;Editer</span></a>
+                <a (click) ="deleteData(produit.id)"><span style="margin-right: 10px" class="label label-rounded label-danger"> <span class="glyphicon glyphicon-trash"></span> &nbsp;&nbsp;Supprimer</span></a>
+              </div>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+        <div class="clearfix">
+          <ul class="pagination">
+            <pagination-controls (pageChange)="p = $event"
+                                 directionLinks="true"
+                                 autoHide="true"
+                                 responsive="true"
+                                 previousLabel="Précédent"
+                                 nextLabel="Suivant">
+
+            </pagination-controls>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,213 @@
+
+
+<section id="content" class="table-layout animated fadeIn"   >
+
+    <!-- begin: .tray-center -->
+    <div class="tray tray-center col-md-12" >
+  
+      <div class="mw1400 center-block">
+  
+        <!-- Begin: Content Header -->
+        <div class="content-header">
+  
+        </div>
+  
+        <!-- Begin: Admin Form -->
+        <div class="admin-form" >
+  
+          <div class="panel heading-border">
+            <div class="panel-body bg-light">
+  
+  
+  
+              <div class="section-divider mb40" id="spy1">
+                <span>Créer ou Modifier Abonnement</span>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6 center-block">
+                <label class="form-control-label"  for="field_libelleModule">Nom et Prénom </label>
+                <input type="text" class="gui-input " name="nom"  [(ngModel)]="abonner.nom" readonly  style="color: blue;font-weight: bold;font-size: larger;"/>
+              </div>
+              <div class="form-group col-md-6 center-block">
+                <label class="form-control-label"  for="field_libelleModule">Téléphone </label>
+                <input type="text" class="gui-input" name="tel"  [(ngModel)]="abonner.numero" readonly  style="color: blue;font-weight: bold;font-size: larger;" />
+              </div>
+              </div>
+              <div class="row">
+  
+                <div class="form-group col-md-6 center-block">
+                  <label class="form-control-label"  for="field_libelleModule">Nombre de Ticket </label>
+  
+                  <div class="section">
+                    <label class="field prepend-icon">
+                      <input type="text" class="gui-input" name="libelleModule" id="field_libelleModule"  required="required"  style="color: blue;font-weight: bold;font-size: larger;"
+                             placeholder="Nombre de ticket" [(ngModel)]="abonnement.nombreticket" />
+                      <label for="field_libelleModule" class="field-icon">
+                      </label>
+                    </label>
+                  </div>
+                </div>
+  
+  
+  
+              </div>
+            
+              <div class="col-md-6 center-block">
+              <label class="form-control-label" >Produit</label>
+              <ng-select  [items]="this.items"
+                         bindLabel="libelle"
+                         placeholder="Select item"
+                         appendTo="body"
+                         multiple="true"
+                         (change)="getValues1()"
+                         [(ngModel)]="this.selected">
+              </ng-select>
+              </div>
+              <br>
+  
+              <br>
+              <div class="col-md-12">
+                <div class="form-group col-md-12" *ngFor="let document of this.items;let q=index">
+                  <div [hidden]="!document.cocher">
+  
+  
+                  <br>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <td> <span class="btn btn-default"  style = "font-weight: bold;font-size:20px" >{{document.libelle}}</span></td>
+                    </div>
+  
+  
+  
+  
+  
+  
+                    <div class="col-md-4">
+                    <div class="form-group col-md-12 center-block">
+                      <label class="form-control-label"  >Quantite</label>
+  
+                      <div class="section">
+  
+                        <input type="text" class="gui-input" name="etModule{{q}}" id="field_etModule{{q}}"  required="required" [(ngModel)]="document.qte"  style="color: blue;font-weight: bold;font-size: larger;"
+                        />
+                        <label  class="field-icon">
+  
+                        </label>
+  
+  
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+  
+  
+  
+                <div>
+  
+  
+  
+                  <!--<div class="row">
+                    <div class=" col-md-6 center-block">
+                      <label class="form-control-label"  for="field_logoModule">Logo </label>
+  
+                      <div class="section">
+                        <label class="field prepend-icon">
+                          <input type="text" class="gui-input" name="logoModule" id="field_logoModule"  required="required"
+                                 placeholder="Ninea de L'ecole" />
+                          <label for="field_logoModule" class="field-icon">
+                            <i class="fa fa-user"></i>
+                          </label>
+                        </label>
+                        <small class="form-text text-danger"
+                               >
+                          Ce champ est obligatoire
+                        </small>
+  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+  
+  
+                    <div class="form-group col-md-6 center-block">
+                      <label class="form-control-label" for="field_rang">Rang</label>
+                      <div class="section">
+                        <label class="field prepend-icon">
+                          <input type="number" class="gui-input" name="rang" id="field_rang"
+                                   placeholder="Ninea de L'ecole" />
+                          <label for="field_rang" class="field-icon">
+                            <i class="fa fa-user"></i>
+                          </label>
+                        </label>
+                      </div>
+                    </div>
+                  </div>-->
+                  <!--<div class="row">
+                    <div class="form-group col-md-6 center-block">-->
+  
+                  <!--<div *ngFor="let site of this.sites">
+                      <label class="option">
+                          <input type="checkbox" (change)="changeEtatSite(site)" name="checked" [checked]="this.site.selectedSite" value="checked" checked>
+                          <span class="checkbox"></span>{{this.site.codeSite}}</label>
+  
+                  </div>-->
+  
+  
+                  <!--  </div>
+                  </div>-->
+                  <!--  <div class="row">
+                      <div class="form-group col-md-6 center-block">
+                        <label class="form-control-label"  for="field_rang">Etat</label>
+                        <label class="switch block mt15">
+                          <input type="checkbox"   name="tools" id="t2" value="reports">
+                          <label for="t2" data-on="Oui" data-off="Non"></label>
+  
+                        </label>
+  
+                      </div>
+                    </div>-->
+                  <div class="row">
+                    <div style="float: right;">
+                      <button  type="submit" id="save-entity"  class="btn btn-primary" (click)="insertData()" >
+                        &nbsp;<span >Save</span>
+                      </button>
+                      <button type="button" id="cancel-save" class="btn btn-danger"  (click)="precedentPage()" >
+                        &nbsp;<span >Annuler</span>
+                      </button>
+  
+                    </div>
+                  </div>
+  
+                  <!--
+                  <div class="form-group">
+                      <label jhiTranslate="isiarchivageApp.module.site" for="field_site">Site</label>
+                      <select class="form-control" id="field_site" multiple name="site" [(ngModel)]="module.sites">
+                          <option [ngValue]="getSelected(module.sites, siteOption)" *ngFor="let siteOption of sites; trackBy: trackSiteById">{{siteOption.id}}</option>
+                      </select>
+                  </div>-->
+                </div>
+  
+  
+  
+  
+  
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  
+  
+  
+  
+  

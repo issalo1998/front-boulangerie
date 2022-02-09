@@ -1,0 +1,142 @@
+<div>
+    
+   
+
+    <section id="content" class="table-layout animated fadeIn"   >
+
+      <!-- begin: .tray-center -->
+      <div class="tray tray-center col-md-12" >
+
+        <div class="mw1400 center-block">
+
+          <!-- Begin: Content Header -->
+          <div class="content-header">
+
+          </div>
+
+          <!-- Begin: Admin Form -->
+          <div class="admin-form" >
+
+            <div class="panel heading-border" >
+              <div class="panel-body bg-light">
+
+                <div class="section-divider mb40" id="spy1">
+                  <span>Débrief Du Mois</span>
+                </div>
+               
+                <div class="table-responsive" >
+                  <div class="col-md-6 center-block">
+                    <label class="form-control-label" >Mois</label>
+                    <ng-select  [items]="this.moiss"
+                                bindLabel="libelle"
+                                placeholder="Select item"
+                                appendTo="body"
+                                (change)="getValues1()"
+                                [(ngModel)]="this.selected">
+                    </ng-select>
+                  </div>
+                  <br><br>
+
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Versement M/S</th>
+                            <th scope="col">Dépot</th>
+                            <th scope="col">Abonnement</th>
+                            <th scope="col">Frais Spéciaux</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let a of this.alltab">
+                            <td>
+                             
+                                <span class="label label-default center-block" >
+                                    {{a.date}}
+
+                                </span>
+                               
+                               
+                           
+                            </td>
+                            <td >
+                              <div  class="row" *ngFor="let b of a.caisse.tab" >
+                                <div class="col-md-4">
+                                  <span class="label label-primary" >
+                                    {{b.horaire}}
+                                </span>
+                                </div>
+                                <div class="col-md-4">
+                                <p style="font-weight: bold;">{{b.verser}} fr</p>
+                              </div>
+                                </div>
+                                
+                            </td>
+                            <td>
+                              <div  class="row"  *ngFor="let b of a.depot"  >
+                                <div class="col-md-4" *ngIf="a.depot.length!=0" >
+                                  <span class="label label-success" >
+                                    {{b.nomboutique}}
+                                </span>
+                                </div>
+                                <div class="col-md-4" *ngIf="a.depot.length!=0">
+                                <p style="font-weight: bold;">{{b.montant}} fr</p>
+                              </div>
+                                </div>
+                                <p *ngIf="a.depot.length==0"  style="font-weight: bold;" class="center"> Pas de depot </p>
+
+                            </td>
+                            <td>
+                              <div  class="row"  *ngFor="let b of a.abonnement"  >
+                                <div class="col-md-4" *ngIf="a.abonnement.length!=0" >
+                                  <span class="label label-warning" >
+                                    {{b.nom}}
+                                </span>
+                                </div>
+                                <div class="col-md-4" *ngIf="a.abonnement.length!=0">
+                                <p style="font-weight: bold;">{{b.somme}} fr</p>
+                              </div>
+                                </div>
+                                <p *ngIf="a.abonnement.length==0"  style="font-weight: bold;" class="center"> Pas d'abonnement' </p>
+
+                            </td>
+                            <td>
+                              <div  class="row"  *ngFor="let b of a.frais"  >
+                                <div class="col-md-4" *ngIf="a.frais.length!=0" >
+                                  <span class="label label-danger" >
+                                    {{b.libelle}}
+                                </span>
+                                </div>
+                                <div class="col-md-4" *ngIf="a.frais.length!=0">
+                                <p style="font-weight: bold;">{{b.montant}} fr</p>
+                              </div>
+                                </div>
+                                <p *ngIf="a.frais.length==0"  style="font-weight: bold;" class="center"> Pas de frais </p>
+
+                            </td>
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                      <p   style="font-weight: bold;" class="center">Total Caisse: {{this.totalc}} fr </p>
+                      <p   style="font-weight: bold;" class="center">Total Frais :{{this.totalfr}} fr</p>
+                      <p   style="font-weight: bold;" class="center">Total Dépot :{{this.totaldpt}} fr</p>
+                      <p   style="font-weight: bold;" class="center">Total Abonnement :{{this.totalab}} fr</p>
+                      <p   style="font-weight: bold; font-size: 30px;color: black;" class="center">Total Général :{{this.totalab+this.totaldpt+this.totalc-this.totalfr}} fr</p>
+                 
+                </div>
+
+
+
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </div>

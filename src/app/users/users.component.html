@@ -1,0 +1,210 @@
+<div class="panel panel-info panel-border top mb35">
+  <div class="panel-heading">
+    <span class="panel-title"> <span class=" glyphicon glyphicon-user"></span>CREER UN UTILISATEUR</span>
+  </div>
+  <div class="panel-body bg-light dark">
+    <div class="tab-content pn br-n admin-form">
+      <div  class="tab-pane active">
+        <form [hidden]="hidden" (ngSubmit)="insertData()">
+          <div class="section row">
+            <div class="col-md-4">
+              <label  class="field prepend-icon">
+                <input type="text" name="prenom" [(ngModel)]="user.prenom"   class="gui-input" placeholder="Prenom">
+                <label  class="field-icon">
+                  <i class="fa fa-user"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label  class="field prepend-icon">
+                <input type="text" name="nom" [(ngModel)]="user.nom"   class="gui-input" placeholder="Nom">
+                <label  class="field-icon">
+                  <i class="fa fa-user"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label  class="field prepend-icon">
+                <input type="text" name="username" [(ngModel)]="user.username"   class="gui-input" placeholder="Username">
+                <label  class="field-icon">
+                  <i class="fa fa-user"></i>
+                </label>
+              </label>
+            </div>
+          </div>
+          <div class="section row">
+            <div class="col-md-4">
+              <label  class="field prepend-icon">
+                <input type="password" name="password" [(ngModel)]="user.password"   class="gui-input" placeholder="Mot de passe">
+                <label  class="field-icon">
+                  <i class="fa fa-user"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="col-md-3 control-label">Etat</label>
+                <div class="col-md-8">
+                  <select name="etat" [(ngModel)]=user.etat  class="select2-single form-control">
+                    <option value="1">Activé</option>
+                    <option value="0">Desactivé</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="col-md-3 control-label">Profil</label>
+                <div class="col-md-8">
+                  <select name="profil_id" [(ngModel)]="user.profil_id"  class="select2-single form-control">
+                    <option *ngFor="let profil of profils" value="{{profil.id}}">{{profil.libelle}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section row">
+            <div class="col-md-2">
+              <button  class="btn active btn-primary btn-block">
+               AJOUTER <span class="glyphicon glyphicon-plus"></span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div  class="tab-pane active">
+        <form [hidden]="!hidden" (ngSubmit)="updateUsers()">
+          <div class="section row">
+            <div class="col-md-4">
+              <label  class="field prepend-icon">
+                <input type="text" name="prenom" [(ngModel)]="user.prenom"   class="gui-input" placeholder="Prenom">
+                <label  class="field-icon">
+                  <i class="fa fa-user"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label  class="field prepend-icon">
+                <input type="text" name="nom" [(ngModel)]="user.nom"   class="gui-input" placeholder="Nom">
+                <label  class="field-icon">
+                  <i class="fa fa-user"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label  class="field prepend-icon">
+                <input type="text" name="username" [(ngModel)]="user.username"   class="gui-input" placeholder="username">
+                <label  class="field-icon">
+                  <i class="fa fa-user"></i>
+                </label>
+              </label>
+            </div>
+          </div>
+          <div class="section row">
+            <div class="col-md-3">
+              <label  class="field prepend-icon">
+                <input type="password" name="password" [(ngModel)]="user.password"   class="gui-input" placeholder="Mot de passe">
+                <label  class="field-icon">
+                  <i class="fa fa-user"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="col-md-3 control-label">Etat</label>
+                <div class="col-md-8">
+                  <select name="etat" [(ngModel)]="user.etat"  class="select2-single form-control">
+                    <option value="1" >Activé</option>
+                    <option value="0" >Desactivé</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="col-md-3 control-label">Profil</label>
+                <div class="col-md-8">
+                  <select name="profil_id" [(ngModel)]="user.profil_id"  class="select2-single form-control">
+                    <option *ngFor="let profil of profils"   value="{{profil.id}}">{{profil.libelle}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="section row" >
+            </div>
+            <div class="col-md-3">
+              <button  class="btn active btn-primary btn-block">Editer&nbsp;<span class="glyphicon glyphicon-pencil"></span></button>
+            </div>
+
+            <div class="col-md-3">
+              <button (click)="cancel()" type="button" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Retour</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-body pn">
+    <div class="table-responsive">
+      <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+        <thead>
+        <tr class="bg-light">
+          <th class="text-center">Numero</th>
+          <th class="">Prenom</th>
+          <th class="">Nom</th>
+          <th class="">Username</th>
+          <th class="">Password</th>
+          <th class="">Etat</th>
+          <th class="">Profil</th>
+          <th class="text-right">Actions</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of userList | paginate: { itemsPerPage: 10, currentPage: p} , let i=index">
+          <td>
+            {{i+1}}
+          </td>
+          <td class="">
+            {{user.prenom}}
+          </td>
+          <td class="">
+            {{user.nom}}
+          </td>
+          <td class="">
+            {{user.username}}
+          </td>
+          <td class="">
+            {{user.password}}
+          </td>
+          <td class="">{{user.etat}}</td>
+          <td class="">{{user.profil}}</td>
+
+          <td class="text-right">
+            <div class="btn-group flex-btn-group-container">
+              <a (click)="getUser(user.id)"><span style="margin-right: 10px" type="button" class="label label-rounded label-warning" ><span class="glyphicon glyphicon-pencil"></span> &nbsp;&nbsp;Editer</span></a>
+              <a (click) ="deleteData(user.id)"><span style="margin-right: 10px" class="label label-rounded label-danger"> <span class="glyphicon glyphicon-trash"></span> &nbsp;&nbsp;Supprimer</span></a>
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+      <div class="clearfix">
+        <ul class="pagination">
+          <pagination-controls (pageChange)="p = $event"
+                               directionLinks="true"
+                               autoHide="true"
+                               responsive="true"
+                               previousLabel="Précédent"
+                               nextLabel="Suivant">
+
+          </pagination-controls>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="panel panel-info panel-border top mb35">
+  <div class="panel-heading">
+    <span class="panel-title">CREER UNE VAGUE DE PATISSERIE</span>
+  </div>
+  <div class="panel-body bg-light dark">
+    <div class="tab-content pn br-n admin-form">
+      <div  class="tab-pane active">
+        <div class="section row">
+          <div class="col-md-4">
+            <label class="field prepend-icon">
+              <textarea [(ngModel)]="vague.description" class="gui-textarea" id="store-desc" name="store-desc" placeholder="Description du produit"></textarea>
+              <label for="store-desc" class="field-icon">
+                <i class="fa fa-text-height"></i>
+              </label>
+            </label>
+          </div>
+          <div class="col-md-4" style="margin-top:15px;">
+            <div class="form-group">
+              <label class="col-md-2 control-label">Horaire</label>
+              <div class="col-md-7">
+                <select (change)="selectHoraire()" name="horaire"  [(ngModel)]="vague.horaire" class="select2-single form-control">
+                  <option value="matin" > Matin</option>
+                  <option value="soir" > Soir</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-2" style="margin-top: 15px;">
+            <button [disabled]="disable" (click)="addVague()" class="btn active btn-primary btn-block">
+              AJOUTER <span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  [hidden]="produit.statut" *ngFor="let produit of prodList"  class="panel panel-info panel-border top mb35">
+      <div class="panel-heading">
+        <span class="panel-title">Creation de {{produit.libelle}}.</span>
+      </div>
+      <div class="tab-content pn br-n admin-form">
+        <div  class="tab-pane active  p8 ">
+          <div class="section row">
+            <div class="col-md-3">
+              <label  for="inputStandard"  style=" margin-bottom: -1.8px;"class="col-md-1 control-label">Reste Precedant</label>
+              <label  class="field prepend-icon">
+                <input readonly  type="number" min="0"  name="reste_prec" [(ngModel)]="produit.reste_prec"   class="gui-input" placeholder="Reste Precedant">
+                <label  class="field-icon">
+                  <i class="fa fa-text-height"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <label style="margin-bottom: 10px  ; margin-top: 5px  ;" for="inputStandard" class="col-md-1 control-label">Production</label>
+              <label  class="field prepend-icon">
+                <input  type="number"  min="0" name="nommbre" [(ngModel)]="produit.nombre"   class="gui-input" placeholder="Quantité">
+                <label  class="field-icon">
+                  <i class="fa fa-text-height"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-3">
+              <label style="margin-bottom: 10px  ; margin-top: 5px  ;" for="inputStandard" class="col-md-1 control-label">Reste</label>
+              <label  class="field prepend-icon">
+                <input  type="number" min="0" name="vente" [(ngModel)]="produit.reste"   class="gui-input" placeholder="Reste">
+                <label  class="field-icon">
+                  <i class="fa fa-text-height"></i>
+                </label>
+              </label>
+            </div>
+            <div class="col-md-1 col-md-offset-1" style="margin-top:30px;">
+              <button class="btn btn-danger" (click)="cancel(produit.id)"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

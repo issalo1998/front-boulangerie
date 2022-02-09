@@ -1,0 +1,252 @@
+
+
+<div class="panel panel-info panel-border top mb35">
+  <div class="panel-heading">
+    <span class="panel-title">EDITION DE CAISSE </span>
+  </div>
+  <div class="panel-body bg-light dark">
+    <div class="alert alert-sm alert-border-left alert-primary light alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <i class="fa fa-cubes pr10 hidden"></i>
+      <strong> Bonjour:</strong>
+      Veuillez choisir l'horaire et le caissier avant de pouvoir entrer des données
+    </div>
+    <div class="panel-menu admin-form theme-primary">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="inputSelect" class="col-lg-3 control-label">Caissier</label>
+          <div class="col-lg-8">
+            <div>
+              <select  [(ngModel)]="caisse.caissier" class="form-control">
+                <option *ngFor="let user of userList" value="{{user.prenom}}&nbsp;{{user.nom}}">{{user.prenom}}&nbsp;{{user.nom}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="inputSelect" class="col-lg-3 control-label">Horaire</label>
+          <div class="col-lg-8">
+            <div>
+              <select (change)="selectHoraire()" [(ngModel)]="caisse.horaire" class="form-control">
+                <option value="matin">Matin</option>
+                <option value="soir">Soir</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-md-offset-1" >
+          <button  class="btn active btn-danger btn-block" (click)="redirect()"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Retour&nbsp;</button>
+        </div>
+      </div>
+    </div>
+    <div  class="row">
+      <div class="col-md-6">
+
+        <!-- Input Fields -->
+        <div class="panel">
+          <div class="panel-heading">
+            <span class="panel-title">SORTANT</span>
+          </div>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Abonnement</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number"  min="0" [(ngModel)]="caisse.abonnement" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Ration</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.ration" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Frais Patisserie</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.frais_patis" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Glace</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.glace" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Levure + Produit</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.levure" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Journeé</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number"  min="0" [(ngModel)]="caisse.journee" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Omo + Javel</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.omo_javel" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Livraison</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number"  min="0" [(ngModel)]="caisse.livraison" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Commision</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.commision" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Retour</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.retour" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Offert</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.offert" id="inputStandard" class="form-control" >
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Divers</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number" min="0" [(ngModel)]="caisse.divers" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-3 control-label">Depenses</label>
+              <div class="col-lg-8">
+                <div>
+                  <input type="number"  min="0" [(ngModel)]="caisse.depense" id="inputStandard" class="form-control" placeholder="Type Here...">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-md-offset-9" style="margin-top: 10px;">
+              <button (click)="clickOk()" [disabled]="disableok" class="btn active btn-primary btn-block">OK&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Field Validation -->
+
+
+
+      </div>
+      <div class="col-md-6">
+
+        <!-- Input Fields -->
+        <div class="panel">
+          <div class="panel-heading">
+            <span class="panel-title">ENTRANT</span>
+          </div>
+          <div class="panel-body"  style="height:546px;">
+
+
+            <div class="form-group">
+              <label for="disabledInput" class="col-lg-3 control-label">Boulangerie</label>
+              <div class="col-lg-8">
+                <div>
+                  <input class="form-control" [(ngModel)]="caisse.boulangerie" id="disabledInput" type="number" placeholder="860000" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="disabledInput" class="col-lg-3 control-label">Patisserie</label>
+              <div class="col-lg-8">
+                <div>
+                  <input class="form-control" [(ngModel)]="caisse.patisserie" id="disabledInput" type="number" placeholder="3009" disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group"></div>
+            <div class="form-group"></div>
+
+            <div class="form-group">
+              <label for="disabledInput" class="col-lg-3 control-label">Entrant</label>
+              <div class="col-lg-8">
+                <div>
+                  <input class="form-control" [(ngModel)]="caisse.entrant" id="disabledInput" type="number" placeholder="3009" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="disabledInput" class="col-lg-3 control-label">Sortant</label>
+              <div class="col-lg-8">
+                <div>
+                  <input class="form-control" [(ngModel)]="caisse.sortant" id="disabledInput" type="number" placeholder="3009" disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group"></div>
+            <div class="form-group"></div>
+
+            <div class="form-group">
+              <label for="disabledInput" class="col-lg-3 control-label">A Verser</label>
+              <div class="col-lg-8">
+                <div>
+                  <input class="form-control" [(ngModel)]="caisse.doit_verse" id="disabledInput" type="number"placeholder="3009" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="disabledInput" class="col-lg-3 control-label">Versé</label>
+              <div class="col-lg-8">
+                <div>
+                  <input [(ngModel)]="caisse.verse" min="0"  class="form-control" type="number">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="disabledInput" class="col-lg-3 control-label">difference</label>
+              <div class="col-lg-8">
+                <div>
+                  <input value="{{caisse.verse-caisse.doit_verse}}"  [(ngModel)]="caisse.difference" min="0" class="form-control" type="number" disabled>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 10px;" class="col-md-3 col-md-offset-8">
+              <button (click)="enregistrer()" [disabled]="disablesave" class="btn active btn-primary btn-block">Editer&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

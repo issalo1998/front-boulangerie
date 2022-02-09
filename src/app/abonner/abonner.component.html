@@ -1,0 +1,110 @@
+<div>
+    
+      <h2 id="page-heading">
+  
+        <button style="float: right;margin-right: 20px" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-profil" routerLink="/abonnersUpdate" >
+  
+          <span >
+               Nouveau Abonner
+          </span>
+        </button>
+      </h2>
+      <br/> <br/>
+  
+      <section id="content" class="table-layout animated fadeIn"   >
+  
+        <!-- begin: .tray-center -->
+        <div class="tray tray-center col-md-12" >
+  
+          <div class="mw1400 center-block">
+  
+            <!-- Begin: Content Header -->
+            <div class="content-header">
+  
+            </div>
+  
+            <!-- Begin: Admin Form -->
+            <div class="admin-form" >
+  
+              <div class="panel heading-border" >
+                <div class="panel-body bg-light">
+  
+                  <div class="section-divider mb40" id="spy1">
+                    <span>Liste des Abonners</span>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="section">
+                      <label class="field prepend-icon">
+                        <input type="text" class="gui-input" name="matricule" id="field_codeEcole"
+                               [(ngModel)]="this.mot" placeholder="Barre de recherche " />
+                        <label for="field_codeEcole" class="field-icon">
+                          <i class="fa fa-search"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="table-responsive" >
+                    <table class="table table-striped">
+  
+                      <tbody>
+  
+  
+                        <div class="col-sm-4 col-xl-3" *ngFor="let p of this.clients| abonnerpipe:this.mot | paginate: { itemsPerPage: 10, currentPage: p};let i=index"  >
+                          <div class="panel panel-tile text-center br-a br-grey">
+                            <div class="panel-body">
+                                <a >
+                                    <img [src]="p.photo?p.photo:avatar" style="max-height: 120px;" alt="client image"/>
+      
+                                  </a>
+                              <br>
+                              <br>
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><b>Nom du Client:</b>  {{p.nom}}</li>
+                                <li class="list-group-item"><b>Numéro du Client:</b>  {{p.numero}}</li>
+                                
+                              <!--  <li class="list-group-item"><span class="label label-rounded label-danger"   (click)="deleteSupprimer(p.id)" >Supprimer</span></li>-->
+                              </ul>
+                            </div>
+                            <div class="panel-footer br-t p12">
+                    <span class="fs11">
+                    <span style="margin-right: 10px" type="button"   class="label label-rounded label-primary"   routerLink="/abonnementliste/{{p.id}}">Historique</span>
+                                    <span style="margin-right: 10px" type="button"   class="label label-rounded label-warning" routerLink="/abonnersUpdate/{{p.id}}" >Editer</span>
+                                    <span style="margin-right: 10px" type="button"   class="label label-rounded label-dark" routerLink="/abonnement/{{p.id}}" >Ajouter</span>
+                     
+  
+                    </span>
+                            </div>
+                          </div>
+                        </div>
+  
+                      </tbody>
+                    </table>
+                    <div class="clearfix">
+                      <ul class="pagination">
+                        <pagination-controls (pageChange)="p = $event"
+                                             directionLinks="true"
+                                             autoHide="true"
+                                             responsive="true"
+                                             previousLabel="Précédent"
+                                             nextLabel="Suivant">
+  
+                        </pagination-controls>
+                      </ul>
+                    </div>
+                  </div>
+  
+  
+  
+  
+                </div>
+  
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </section>
+  
+  
+    </div>
+  

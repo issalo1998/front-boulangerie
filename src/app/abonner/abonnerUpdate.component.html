@@ -1,0 +1,112 @@
+
+
+<section id="content" class="table-layout animated fadeIn"   >
+
+  <!-- begin: .tray-center -->
+  <div class="tray tray-center col-md-12" >
+
+    <div class="mw1400 center-block">
+
+      <!-- Begin: Content Header -->
+      <div class="content-header">
+
+      </div>
+
+      <!-- Begin: Admin Form -->
+      <div class="admin-form" >
+
+        <div class="panel heading-border">
+          <div class="panel-body bg-light">
+
+
+
+            <div class="section-divider mb40" id="spy1">
+              <span>Créer ou Modifier Client</span>
+            </div>
+            
+            <form name="editForm" role="form" #editForm="ngForm" (ngSubmit)="insertData()" >
+
+              <div>
+
+                
+                <div class="row" >
+
+                    <div class="form-group col-md-4">
+                        <label class="form-control-label"  for="field_libelleModule">Nom du Client</label>
+
+                        <div class="section">
+                          <label class="field prepend-icon">
+                            <input type="text" class="gui-input" name="nom" id="nom" #nom="ngModel" [class.invalid]="!nom.valid && nom.touched" required="required"
+                                  placeholder="Nom du Client" [(ngModel)]= "client.nom" />
+                            <label for="field_libelleModul" class="field-icon">
+                              <i class="fa fa-user"></i>
+                            </label>
+                            <small [class.hidden]="nom.valid && nom.touched" class="form-text text-danger"
+                                 >
+                              Ce champ est obligatoire
+                            </small>
+
+                          </label>
+                        </div>
+                      </div>
+
+
+                  <div class="form-group col-md-4">
+                    <label class="form-control-label"  for="field_libelleModule">Numero</label>
+
+                    <div class="section">
+                      <label class="field prepend-icon">
+                        <input type="text" class="gui-input" name="numero"  #numero="ngModel" [class.invalid]="!numero.valid &&numero.touched" required="required"
+                              placeholder="Prenom du client" [(ngModel)]="client.numero" />
+                        <label for="field_libelleModule" class="field-icon">
+                          <i class="fa fa-user"></i>
+                        </label>
+                        <small  [class.hidden]="numero.valid && numero.touched"class="form-text text-danger"
+                             >
+                          Ce champ est obligatoire
+                        </small>
+
+                      </label>
+                    </div>
+                  </div>
+
+
+                 
+
+
+                </div>
+              
+               
+                <div class="row">
+                  <div style="float: right;">
+                    <button  type="submit" id="save-entity"  class="btn btn-primary" [disabled]="editForm.form.invalid">
+                     &nbsp;<span >{{this.client.id?'Update':'Save'}}</span>
+                    </button>
+                    <button type="button" id="cancel-save" class="btn btn-danger"  (click)="precedentPage()" >
+                     &nbsp;<span >Annuler</span>
+                    </button>
+
+                  </div>
+                </div>
+
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+

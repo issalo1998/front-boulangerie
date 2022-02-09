@@ -1,0 +1,129 @@
+<div class="panel panel-info panel-border top mb35">
+    <div class="panel-heading">
+      <span class="panel-title">CREER UN DEPOT</span>
+    </div>
+    <div class="panel-body bg-light dark">
+      <div class="tab-content pn br-n admin-form">
+        <div  class="tab-pane active">
+          <div class="section row">
+            <form [hidden]="hidden" (ngSubmit)="insertData()">
+              <div class="col-md-3">
+                <label  class="field prepend-icon">
+                  <input type="text" name="nomBoutique" [(ngModel)]="depot.nomBoutique"   class="gui-input" placeholder="Nom de la Boutique">
+                  <label  class="field-icon">
+                    <i class="fa fa-user"></i>
+                  </label>
+                </label>
+              </div>
+              <div class="col-md-3">
+                <label  class="field prepend-icon">
+                  <input type="number" name="montant" [(ngModel)]="depot.montant"   class="gui-input" placeholder="Montant">
+                  <label  class="field-icon">
+                    <i class="fa fa-text-height"></i>
+                  </label>
+                </label>
+              </div>
+              <div class="col-md-3">
+                <label for="filter-datepicker" class="field prepend-picker-icon">
+                  <button type="button" class="ui-datepicker-trigger"><i class="fa fa-calendar-o"></i></button><input name="date" type="date"  [(ngModel)]="depot.date" value="02/03/2015" id="filter-datepicker"  class="gui-input" placeholder="Filter par Date">
+                </label>
+              </div>
+              <div class="col-md-2">
+                <button  class="btn active btn-primary btn-block">
+                  AJOUTER <span class="glyphicon glyphicon-plus"></span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div  class="tab-pane active">
+          <div class="section row">
+            <form [hidden]="!hidden" (ngSubmit)="update()">
+                <div class="col-md-3">
+                    <label  class="field prepend-icon">
+                      <input type="text" name="nomBoutique" [(ngModel)]="depot.nomBoutique"   class="gui-input" placeholder="Nom de la Boutique">
+                      <label  class="field-icon">
+                        <i class="fa fa-user"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <div class="col-md-3">
+                    <label  class="field prepend-icon">
+                      <input type="number" name="montant" [(ngModel)]="depot.montant"   class="gui-input" placeholder="Montant">
+                      <label  class="field-icon">
+                        <i class="fa fa-text-height"></i>
+                      </label>
+                    </label>
+                  </div>
+              <div class="col-md-2">
+                <label for="filter-datepicker" class="field prepend-picker-icon">
+                  <button type="button" class="ui-datepicker-trigger"><i class="fa fa-calendar-o"></i></button><input name="date" type="date"  [(ngModel)]="depot.date" value="02/03/2015" id="filter-datepicker"  class="gui-input" placeholder="Filter par Date">
+                </label>
+              </div>
+              <div class="col-md-2">
+                <button  class="btn active btn-primary btn-block">Editer&nbsp;<span class="glyphicon glyphicon-pencil"></span></button>
+              </div>
+              <div class="col-md-2">
+                <button (click)="cancel()" type="button" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Retour</button>
+              </div>
+            </form>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel">
+    <div class="panel-body pn">
+      <div class="table-responsive">
+        <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+          <thead>
+          <tr class="bg-light">
+            <th class="text-center">Numero</th>
+            <th class="">Date</th>
+            <th class="">Nom Boutique</th>
+            <th class="">Montant</th>
+            <th class="text-right">Actions</th>
+  
+  
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let depot of depotList  | paginate: { itemsPerPage: 10, currentPage: p} , let i=index">
+            <td>
+              {{i+1}}
+            </td>
+            <td>
+                {{depot.date}}
+              </td>
+            <td class="">
+              {{depot.nomboutique}}
+            </td>
+            <td class="">{{depot.montant}}</td>
+            <td class="text-right">
+              <div class="btn-group flex-btn-group-container">
+                <a (click) ="deleteData(depot.id)"><span style="margin-right: 10px" class="label label-rounded label-danger"> <span class="glyphicon glyphicon-trash"></span> &nbsp;&nbsp;Supprimer</span></a>
+                <a (click)="getOne(depot.id)"><span style="margin-right: 10px" type="button" class="label label-rounded label-warning" ><span class="glyphicon glyphicon-pencil"></span> &nbsp;&nbsp;Editer</span></a>
+
+              </div>
+            </td>
+          </tr>
+  
+          </tbody>
+        </table>
+        <div class="clearfix">
+          <ul class="pagination">
+            <pagination-controls (pageChange)="p = $event"
+                                 directionLinks="true"
+                                 autoHide="true"
+                                 responsive="true"
+                                 previousLabel="Précédent"
+                                 nextLabel="Suivant">
+
+            </pagination-controls>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
